@@ -1,1 +1,1 @@
-#C Programing loops and conditions
+#C Programming control flows, loops and variables
