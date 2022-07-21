@@ -1,22 +1,15 @@
 #include "main.h"
 
 /**
- * clear_bit - a func sets the value of a bit to 0 at a given index
- * @n: an integer
- * @index: given index
- * Return: integer 1 for success, -1 for error
+ * clear_bit - sets the value of a bit to 0 at a given index
+ * @n: pointer to number
+ * @index: index to change
+ * Return: 1 if it worked or -1 if an error occurred
  */
 
 int clear_bit(unsigned long int *n, unsigned int index)
+
 {
-	unsigned long int clear;
-
-	if (index >= (sizeof(*n) * 8))
-		return (-1);
-	clear = 1;
-	clear = clear << index;
-	clear = ~clear;
-	*n = *n & clear;
-
-	return (1);
+	*n = *n & ~(1 << index);
+	return ((index > 8 * sizeof(*n)) ? -1 : 1);
 }

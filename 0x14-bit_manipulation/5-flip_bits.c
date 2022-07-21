@@ -1,24 +1,20 @@
 #include "main.h"
 
 /**
- * flip_bits - a func that returns the number of bits you would need to flip
+ * flip_bits - returns the number of bits you would need to flip
  * to get from one number to another
- * @n: integer n
- * @m: integer m
- * Return: number of bits to needed to flip
+ * @n: base number
+ * @m: number to transform to
+ * Return: the number of bit transformations needed
  */
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int result;
-	unsigned long int flip;
+	int i, res;
 
-	result = 0;
-	flip = n ^ m;
-	while (flip)
-	{
-		result += flip & 1;
-		flip = flip >> 1;
-	}
-	return (result);
+	res = 0;
+	for (i = 8 * sizeof(n) - 1; i >= 0; i--)
+		if (((n ^ m) >> i) & 1)
+			res++;
+	return (res);
 }
